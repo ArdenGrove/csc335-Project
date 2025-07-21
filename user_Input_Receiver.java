@@ -8,33 +8,35 @@ import java.util.Scanner;
 
 public class user_Input_Receiver
 {
+    
+    //ints for size of space
     int inputedSpaceWidth; 
     int inputedSpaceLength;
-    //ints for size of space
-    
+
+    //ints for number of people in the open space and how many are initaly infected
     int inputedNumberOfPeople;
     int inputedInitialyInfected;
-    //ints for number of people in the open space and how many are initaly infected
-    
+
+    //ints for virus characteristics
     int virusTransmissionPercentage; 
     int infectionPeriod;
     int virusImunityDuration;
-    //ints for virus characteristics
-    
+
+    //int for chosen ammount of rounds the sim will run 
     int roundsOfSimulation;
-    
-    
+
+    //int to tempareraly store any input from the user so that it can be checked
     int inputCheacker;  
-    
+
+    //function to validate inputs from the user
     int getValidInput(String prompt){
         Scanner keyboard = new Scanner (System.in);
-        
-        
+
         boolean needValidInput = true;
         while (needValidInput == true) {  
             try {
                 System.out.println(prompt);
-                int inputCheacker = keyboard.nextInt();  // Try reading the integer input
+                inputCheacker = keyboard.nextInt();  
                 if (inputCheacker >= 1) {
                     needValidInput = false;
                 } else {
@@ -45,76 +47,45 @@ public class user_Input_Receiver
                 System.out.println("Invalid input, please input a number larger than or equal to 1.");
                 keyboard.nextLine();  // get rid of the invalid input so it doesnt enter a never ending loop
             }
-            
         }
         return inputCheacker;
     }
-    
+
     public user_Input_Receiver()  
     {
-        Scanner keyboard = new Scanner (System.in);
-        
+        // clears terminal screen
+        System.out.print('\u000C');
         
         System.out.println("Welcome to the Virus Simulator.");
-        
+
         // getting values for the width of the open space
         inputedSpaceWidth = getValidInput("Please input width of open space"); 
+
         
-           
-            
         //getting values for the length of the open space    
         inputedSpaceLength = getValidInput("Please input length of open space");
+
         
-        
-        
-           
         //getting values for number of people in open space and initially infected
-        System.out.println("Please input number of people in the open space");
-        
-       //needValidInput = true;
-        while (needValidInput == true) {  
-            try {
-                inputCheacker = keyboard.nextInt();  // Try reading the integer input
-                if (inputCheacker >= 1) {
-                    inputedNumberOfPeople = inputCheacker;
-                    needValidInput = false;
-                } else {
-                    System.out.println("Invalid input, please input a number larger than or equal to 1");
-                }
-            } catch (java.util.InputMismatchException e) {
-                //catch for when the user inputs a letter or special charictor
-                System.out.println("Invalid input, please input a number larger than or equal to 1.");
-                keyboard.nextLine();  // get rid of the invalid input so it doesnt enter a never ending loop
-            }
-        }
-            
-        
-        System.out.println("Please input number of people initially infected"); 
-            inputedInitialyInfected = keyboard.nextInt();
-        
+        inputedNumberOfPeople = getValidInput("Please input number of people in the open space"); 
+
+        inputedInitialyInfected = getValidInput("Please input number of people initially infected"); 
+
         
         //getting virus transmission rate, infection period, and imunity durration   
-        System.out.println("please input the virus transmition rate as a percentage of 100");
-        System.out.println("(do not include the % sign)"); 
-            virusTransmissionPercentage = keyboard.nextInt();
-   
-        System.out.println("please input how many rounds a person is infected for");
-            infectionPeriod = keyboard.nextInt();
-        
-        System.out.println("please input how many rounds immunity lasts for after recovery");
-            virusImunityDuration = keyboard.nextInt();
-            
+        virusTransmissionPercentage = getValidInput("please input virus transmition rate as a percentage of 100 (don't include % sign)");
+
+        infectionPeriod = getValidInput("please input how many rounds a person is infected for");
+
+        virusImunityDuration = getValidInput("please input how many rounds immunity lasts for after recovery");
+
         
         //getting the ammount of rounds to simulate for
-        System.out.println("please input how many rounds you would like to simulate");
-            roundsOfSimulation = keyboard.nextInt();
-            
-            
-        
-        
+        roundsOfSimulation = getValidInput("please input how many rounds you would like to simulate");
+
         
         
         
     }    
-    
+
 }
