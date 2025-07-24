@@ -10,7 +10,9 @@ import java.util.ArrayList;
 public class People
 {
     //alows me to get ints from the user input receiver class
-    User_Input_Receiver UI = new User_Input_Receiver();  
+    UserInputReceiver UI = new UserInputReceiver();  
+    
+    
     ArrayList<Person> everyBody = new ArrayList <Person>();   
     
     
@@ -18,8 +20,9 @@ public class People
     public People()
     {
         for (int i = UI.inputedNumberOfPeople; i >0; i --){
-            Person p = new Person();
+            Person p = new Person(); 
         }
-       
+          
+        
     }
 }
